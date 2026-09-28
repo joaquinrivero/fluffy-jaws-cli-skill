@@ -1,20 +1,21 @@
 # fluffy-jaws-cli-skill
 
-Portable FluffyJaws skill for agent runtimes. Wraps the `fj` CLI so an assistant
-can query FluffyJaws or start its MCP server without pulling raw output into the
-main conversation context.
+A runtime-agnostic skill for Adobe FluffyJaws. Wraps the `fj` CLI so an agent can
+query FluffyJaws or start its MCP server without pulling raw output into the main
+conversation.
 
 ```
-.codex/
-├── AGENTS.md                      # skill + agent registry
-├── agents/fluffyjaws-agent.md     # delegated-query prompt contract
-└── skills/fluffyjaws/
-    ├── SKILL.md
-    └── references/                # API, MCP, FluffyPacks, Python docs
+SKILL.md      # the skill
+references/   # API, MCP, FluffyPacks, Python docs
 ```
 
-The skill file is runtime-agnostic. Copy `.codex/skills/fluffyjaws/` into
-whatever skills directory your runtime reads.
+## Install
+
+Copy this directory into whatever skills directory your runtime reads:
+
+```bash
+git clone git@github.com:joaquinrivero/fluffy-jaws-cli-skill.git ~/.../skills/fluffyjaws
+```
 
 ## Prerequisites
 
@@ -30,18 +31,8 @@ fj chat --thinking "Answer concisely: <question>"        # deeper reasoning
 fj mcp                                                   # MCP stdio server
 ```
 
-Other flags: `--model <name>`, `--pack`/`--fluffypack-slug`, `--session <id>`,
+Other flags: `--model <name>`, `--fluffypack-slug`, `--session <id>`,
 `--api <url>`. Full list: `fj --help`.
-
-## Agent response format
-
-```
-Question: <reframed question>
-Answer: <distilled answer>
-Confidence: high | medium | low
-```
-
-Raw CLI output is never included unless explicitly requested.
 
 ## Troubleshooting
 
