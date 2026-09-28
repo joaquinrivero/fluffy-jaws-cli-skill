@@ -1,6 +1,6 @@
 # fluffyjaws-agent
 
-Use this prompt contract when you want a separate delegated FluffyJaws step without polluting the main Codex context.
+Use this prompt contract when you want a separate delegated FluffyJaws step without polluting the main conversation context.
 
 ## Contract
 

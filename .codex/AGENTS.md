@@ -1,4 +1,4 @@
-# FluffyJaws For Codex
+# FluffyJaws
 
 ## Skills
 
@@ -10,7 +10,7 @@
 
 - Trigger rule: Use `fluffyjaws` when the user wants an answer from FluffyJaws, a compact external lookup through `fj`, the `fj mcp` startup command, or delegated research that should stay out of the main coding context.
 - Discovery rule: Load only the skill file you need. Do not read unrelated files by default.
-- Runtime note: Codex does not create a repo-defined native subagent from markdown alone in this environment.
+- Runtime note: the agent file is a prompt contract, not a native subagent.
 
 ## Agents
 
@@ -18,11 +18,11 @@
 
 - `fluffyjaws-agent`: Prompt contract for delegated FluffyJaws queries. Use when you want to keep the FluffyJaws step separate from the main coding context. File: `./.codex/agents/fluffyjaws-agent.md`
 
-> Note: this is a prompt contract, not a native Codex subagent. Codex follows its instructions by convention, not by runtime-level isolation.
+> Note: a prompt contract, not a native subagent. The runtime follows it by convention, not by enforced isolation.
 
 ## Runtime Model
 
-For Codex, the isolation boundary is the `fj` process:
+The isolation boundary is the `fj` process:
 
 1. Load `./.codex/skills/fluffyjaws/SKILL.md`.
 2. Run `fj chat` with one consolidated question.
